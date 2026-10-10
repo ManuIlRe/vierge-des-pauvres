@@ -1,0 +1,21 @@
+{
+  "photos": [
+    {
+      "image": "/assets/images/uploads/groupe-4.jpg",
+      "legende": ""
+    },
+    {
+      "image": "/assets/images/uploads/groupe-1.jpg",
+      "legende": ""
+    },
+    {
+      "image": "/assets/images/uploads/groupe-2.jpg",
+      "legende": ""
+    },
+    {
+      "image": "/assets/images/uploads/groupe-3.jpg",
+      "legende": ""
+    }
+  ],
+  "videos": []
+}

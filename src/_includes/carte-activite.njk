@@ -1,0 +1,8 @@
+<a class="carte" href="{{ a.url }}">
+  {% if a.data.image %}<img src="{{ a.data.image }}" alt="" loading="lazy">{% endif %}
+  <div class="carte-txt">
+    <p class="date">{{ a.date | dateFr }}</p>
+    <h3>{{ a.data.title }}</h3>
+    {% if a.data.resume %}<p>{{ a.data.resume }}</p>{% endif %}
+  </div>
+</a>

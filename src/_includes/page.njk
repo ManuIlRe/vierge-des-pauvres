@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+<section class="page-head">
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+    {% if chapeau %}<p class="chapeau">{{ chapeau }}</p>{% endif %}
+  </div>
+</section>
+<div class="wrap page-body prose{% if large %} large{% endif %}">
+  {{ content | safe }}
+</div>

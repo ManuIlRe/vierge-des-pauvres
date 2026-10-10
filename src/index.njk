@@ -1,0 +1,75 @@
+---
+layout: base.njk
+permalink: /
+---
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <p class="surtitre">{{ site.sous_titre }}</p>
+      <h1>{{ site.nom }}</h1>
+      <blockquote>
+        <p>«&nbsp;{{ site.citation }}&nbsp;»</p>
+        {% if site.citation_auteur %}<cite>{{ site.citation_auteur }}</cite>{% endif %}
+      </blockquote>
+      <p class="actions">
+        <a class="btn" href="/le-chemin/">Découvrir le Chemin</a>
+        <a class="btn btn-clair" href="/contact/">Nous trouver</a>
+      </p>
+    </div>
+    <figure class="icone">
+      <img src="/assets/images/icone-vierge.jpg" alt="Icône de la Vierge à l’Enfant" width="446" height="646">
+    </figure>
+  </div>
+</section>
+
+<section class="wrap bloc intro">
+  {% if site.image_accueil %}<img class="medaillon" src="{{ site.image_accueil }}" alt="Notre-Dame des Douleurs">{% endif %}
+  <p>{{ site.accueil_texte }}</p>
+</section>
+
+<section class="bloc tripode-bloc">
+  <div class="wrap">
+    <h2>Le tripode : Parole, Liturgie, Communauté</h2>
+    <div class="tripode">
+      <div><span>I</span><h3>Parole</h3><p>Chaque semaine, la communauté célèbre la Parole de Dieu et la laisse éclairer le concret de la vie.</p></div>
+      <div><span>II</span><h3>Liturgie</h3><p>L’Eucharistie dominicale et la Veillée pascale sont le cœur de l’initiation chrétienne.</p></div>
+      <div><span>III</span><h3>Communauté</h3><p>La <em>koinônia</em> : une petite communauté où se donnent et se vérifient l’amour et le pardon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap bloc deux-col">
+  <div>
+    <h2>Horaires</h2>
+    <ul class="horaires">
+      {% for h in site.horaires %}
+      <li><strong>{{ h.jour }} <span>{{ h.heure }}</span></strong>{{ h.description }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    <h2>Nous trouver</h2>
+    {% if site.photo_eglise %}<img class="photo" src="{{ site.photo_eglise }}" alt="L’église de la Vierge des Pauvres" loading="lazy">{% endif %}
+    <p class="pre">{{ site.adresse }}</p>
+    <p>Presbytre : {{ site.presbytre }}</p>
+    <p><a class="lien-fleche" href="/contact/">Contact et accès →</a></p>
+  </div>
+</section>
+
+{% if galerie.photos.length %}
+<section class="wrap bloc bandeau">
+  <div class="titre-ligne"><h2>La vie des communautés</h2><a class="lien-fleche" href="/galerie/">Photos & vidéos →</a></div>
+  {% set photos = galerie.photos %}{% include "diaporama.njk" %}
+</section>
+{% endif %}
+
+{% if collections.activites.length %}
+<section class="bloc fond-clair">
+  <div class="wrap">
+    <div class="titre-ligne"><h2>Activités récentes</h2><a class="lien-fleche" href="/activites/">Tout voir →</a></div>
+    <div class="cartes">
+      {% for a in collections.activites | limit(3) %}{% include "carte-activite.njk" %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

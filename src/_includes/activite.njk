@@ -1,0 +1,28 @@
+---
+layout: base.njk
+---
+<section class="page-head">
+  <div class="wrap">
+    <p class="surtitre"><a href="/activites/">Activités</a> · {{ page.date | dateFr }}</p>
+    <h1>{{ title }}</h1>
+    {% if resume %}<p class="chapeau">{{ resume }}</p>{% endif %}
+  </div>
+</section>
+<article class="wrap page-body prose">
+  {% if image %}<img class="une" src="{{ image }}" alt="">{% endif %}
+  {{ content | safe }}
+
+  {% if video | youtubeId %}
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ video | youtubeId }}" title="Vidéo : {{ title }}" loading="lazy" allowfullscreen></iframe></div>
+  {% endif %}
+
+  {% if photos and photos.length %}
+  <h2>Photos</h2>
+  <div class="grille-photos">
+    {% for p in photos %}
+    <figure><a href="{{ p.image }}"><img src="{{ p.image }}" alt="{{ p.legende }}" loading="lazy"></a>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <p class="retour"><a href="/activites/">← Toutes les activités</a></p>
+</article>

@@ -1,0 +1,19 @@
+---
+layout: page.njk
+title: Photos & vidéos
+permalink: /galerie/
+large: true
+---
+<h2>Photos</h2>
+{% if galerie.photos.length %}
+{% set photos = galerie.photos %}{% include "diaporama.njk" %}
+{% else %}<p>Aucune photo pour le moment.</p>{% endif %}
+
+<h2>Vidéos</h2>
+{% if galerie.videos.length %}
+<div class="grille-videos">
+  {% for v in galerie.videos %}{% if v.url | youtubeId %}
+  <figure><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ v.url | youtubeId }}" title="{{ v.titre }}" loading="lazy" allowfullscreen></iframe></div><figcaption>{{ v.titre }}</figcaption></figure>
+  {% endif %}{% endfor %}
+</div>
+{% else %}<p>Aucune vidéo pour le moment.</p>{% endif %}
