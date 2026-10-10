@@ -38,7 +38,7 @@ p { margin: 0 0 1em; }
 .header-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem 0; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: .7rem; color: #fff; text-decoration: none; }
 .brand:hover { color: var(--or-clair); }
-.croix { width: 40px; height: 40px; color: var(--or); flex: none; }
+.logo { width: 54px; height: 54px; color: var(--or); flex: none; }
 .brand strong { display: block; font: 600 1.45rem/1.1 var(--titre); letter-spacing: .01em; }
 .brand small { display: block; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--or-clair); }
 nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .2rem 1.2rem; margin: 0; padding: 0; }
