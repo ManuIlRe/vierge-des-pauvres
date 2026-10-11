@@ -1,3 +1,8 @@
 [build]
   command = "npm run build"
   publish = "_site"
+
+[[redirects]]
+  from = "/activites/mission-dans-le-quartier/*"
+  to = "/activites/fete-patronale/"
+  status = 301
