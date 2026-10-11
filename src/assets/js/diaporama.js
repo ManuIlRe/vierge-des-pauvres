@@ -57,3 +57,12 @@ function ouvrir(sources, depart, synchroniser) {
   montrer(depart);
   v.showModal();
 }
+
+// Grilles de photos (pages d'activité) : un clic ouvre la visionneuse, avec flèches et zoom
+document.querySelectorAll(".grille-photos").forEach((grille) => {
+  const liens = [...grille.querySelectorAll("a")];
+  liens.forEach((lien, i) => lien.addEventListener("click", (e) => {
+    e.preventDefault();
+    ouvrir(liens.map((l) => l.href), i, () => {});
+  }));
+});
