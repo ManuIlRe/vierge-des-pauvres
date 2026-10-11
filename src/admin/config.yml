@@ -54,22 +54,59 @@ collections:
   - name: reglages
     label: Informations et réglages
     files:
+      - name: accueil
+        label: "Page d'accueil"
+        file: src/_data/accueil.json
+        fields:
+          - { name: citation, label: "Citation (en haut de page)", widget: text, required: false }
+          - { name: citation_auteur, label: "Auteur de la citation", widget: string, required: false }
+          - { name: bouton_1, label: "Bouton vers « Le Chemin »", widget: string, required: false }
+          - { name: bouton_2, label: "Bouton vers « Contact »", widget: string, required: false }
+          - { name: icone, label: "Grande image en haut à droite", widget: image, required: false }
+          - { name: icone_description, label: "Description de cette image", widget: string, required: false }
+          - { name: medaillon, label: "Médaillon rond", widget: image, required: false }
+          - { name: medaillon_description, label: "Description du médaillon", widget: string, required: false }
+          - { name: texte, label: "Texte d'accueil", widget: text }
+          - { name: tripode_titre, label: "Tripode — titre", widget: string }
+          - name: tripode
+            label: "Tripode — encadrés"
+            label_singular: encadré
+            widget: list
+            summary: "{{fields.titre}}"
+            fields:
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: text }
+          - { name: horaires_titre, label: "Titre de la section horaires", widget: string }
+          - { name: acces_titre, label: "Titre de la section adresse", widget: string }
+          - { name: photos_titre, label: "Titre du diaporama", widget: string }
+          - { name: activites_titre, label: "Titre des activités", widget: string }
+          - { name: activites_nombre, label: "Nombre d'activités affichées", widget: number, value_type: int, min: 1, max: 9, default: 3 }
+          - name: sections
+            label: "Sections (glisser pour changer l'ordre, supprimer pour masquer)"
+            label_singular: section
+            widget: list
+            field:
+              name: section
+              label: Section
+              widget: select
+              options:
+                - { label: "Texte d'accueil et médaillon", value: intro }
+                - { label: "Tripode", value: tripode }
+                - { label: "Horaires et adresse", value: horaires }
+                - { label: "Diaporama de photos", value: photos }
+                - { label: "Activités récentes", value: activites }
       - name: site
         label: Paroisse, horaires, contact
         file: src/_data/site.json
         fields:
           - { name: nom, label: Nom, widget: string }
           - { name: sous_titre, label: Sous-titre, widget: string }
-          - { name: citation, label: Citation de la page d'accueil, widget: text }
-          - { name: citation_auteur, label: Auteur de la citation, widget: string, required: false }
-          - { name: accueil_texte, label: Texte d'accueil, widget: text }
           - { name: adresse, label: Adresse, widget: text }
           - { name: lien_carte, label: Lien vers la carte, widget: string }
           - { name: email, label: E-mail, widget: string }
           - { name: telephone, label: Téléphone, widget: string }
           - { name: presbytre, label: Presbytre, widget: string }
           - { name: photo_eglise, label: Photo de l'église, widget: image, required: false }
-          - { name: image_accueil, label: "Médaillon de la page d'accueil (Notre-Dame des Douleurs)", widget: image, required: false }
           - name: horaires
             label: Horaires
             label_singular: Horaire

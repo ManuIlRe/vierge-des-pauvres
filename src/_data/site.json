@@ -1,9 +1,6 @@
 {
   "nom": "Vierge des Pauvres",
   "sous_titre": "Communautés du Chemin néocatéchuménal · Nancy, Haut-du-Lièvre",
-  "citation": "Il faut faire des communautés chrétiennes comme la Sainte Famille de Nazareth, qui vivent en humilité, simplicité et louange : l’autre est Christ.",
-  "citation_auteur": "",
-  "accueil_texte": "Au Haut-du-Lièvre, l’église de la Vierge des Pauvres accueille les communautés du Chemin néocatéchuménal : un itinéraire d’initiation chrétienne pour découvrir ou redécouvrir, en petites communautés, les richesses du baptême.",
   "adresse": "Église de la Vierge des Pauvres\n437 avenue Raymond Pinchard\n54100 Nancy",
   "lien_carte": "https://www.openstreetmap.org/search?query=437%20Avenue%20Raymond%20Pinchard%2C%2054100%20Nancy",
   "email": "paoloanfuso@gmail.com",
@@ -31,6 +28,5 @@
       "description": "Messe"
     }
   ],
-  "photo_eglise": "/assets/images/uploads/eglise-vierge-des-pauvres.webp",
-  "image_accueil": "/assets/images/uploads/notre-dame-des-douleurs.png"
+  "photo_eglise": "/assets/images/uploads/eglise-vierge-des-pauvres.webp"
 }
