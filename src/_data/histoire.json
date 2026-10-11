@@ -1,8 +1,21 @@
 {
   "etapes": [
-    { "annee": "1973", "texte": "C’est à la demande de Monseigneur Jean Bernard que le Chemin néocatéchuménal voit le jour sur le diocèse, le 8 décembre 1973." },
-    { "annee": "2012", "texte": "Monseigneur Papin accueille favorablement la proposition de venue d’une Missio ad Gentes, composée d’un prêtre et de plusieurs familles venues de l’étranger et qui se sont offertes à cette mission." },
-    { "annee": "2019", "texte": "La Missio ad Gentes et les communautés existantes sont envoyées en mission au Haut-du-Lièvre, à l’église de la Vierge des Pauvres, répondant ainsi à l’appel du Pape François d’aller vers les « périphéries »." },
-    { "annee": "Aujourd’hui", "texte": "Il existe 3 communautés, chacune à une étape différente du parcours catéchuménal. Le Père Paolo Anfuso en est le presbytre. La Missio ad Gentes, intégrée à la première communauté, est composée de 2 familles italiennes et d’une famille espagnole." }
-  ]
+    {
+      "annee": "1973",
+      "texte": "C’est à la demande de Monseigneur Jean Bernard que le Chemin néocatéchuménal voit le jour sur le diocèse, le 8 décembre 1973."
+    },
+    {
+      "annee": "2012",
+      "texte": "Monseigneur Papin accueille favorablement la proposition de venue d’une Missio ad Gentes, composée d’un prêtre et de plusieurs familles venues de l’étranger et qui se sont offertes à cette mission."
+    },
+    {
+      "annee": "2019",
+      "texte": "La Missio ad Gentes et les communautés existantes sont envoyées en mission au Haut-du-Lièvre, à l’église de la Vierge des Pauvres, répondant ainsi à l’appel du Pape François d’aller vers les « périphéries »."
+    },
+    {
+      "annee": "Aujourd’hui",
+      "texte": "Il existe 3 communautés, chacune à une étape différente du parcours catéchuménal. Le Père Paolo Anfuso en est le presbytre. La Missio ad Gentes, intégrée à la première communauté, est composée de 2 familles italiennes et d’une famille espagnole."
+    }
+  ],
+  "photo": "/assets/images/uploads/groupe-2.jpg"
 }

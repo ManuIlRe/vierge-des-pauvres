@@ -9,4 +9,4 @@ permalink: /histoire/
   <li><span class="annee">{{ e.annee }}</span><p>{{ e.texte }}</p></li>
   {% endfor %}
 </ol>
-<figure class="photo-fin"><img class="photo" src="/assets/images/uploads/groupe-2.jpg" alt="Les communautés réunies" loading="lazy"></figure>
+{% if histoire.photo %}<figure class="photo-fin"><img class="photo" src="{{ histoire.photo }}" alt="Les communautés réunies" loading="lazy"></figure>{% endif %}
