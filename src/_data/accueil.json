@@ -1,23 +1,38 @@
 {
-  "citation": "Il faut faire des communautés chrétiennes comme la Sainte Famille de Nazareth, qui vivent en humilité, simplicité et louange : l’autre est Christ.",
-  "citation_auteur": "",
-  "bouton_1": "Découvrir le Chemin",
-  "bouton_2": "Nous trouver",
-  "icone": "/assets/images/icone-vierge.jpg",
-  "icone_description": "Icône de la Vierge à l’Enfant",
-  "medaillon": "/assets/images/uploads/notre-dame-des-douleurs.png",
-  "medaillon_description": "Notre-Dame des Douleurs",
-  "texte": "Au Haut-du-Lièvre, l’église de la Vierge des Pauvres accueille les communautés du Chemin néocatéchuménal : un itinéraire d’initiation chrétienne pour découvrir ou redécouvrir, en petites communautés, les richesses du baptême.",
-  "tripode_titre": "Le tripode : Parole, Liturgie, Communauté",
-  "tripode": [
-    { "titre": "Parole", "texte": "Chaque semaine, la communauté célèbre la Parole de Dieu et la laisse éclairer le concret de la vie." },
-    { "titre": "Liturgie", "texte": "L’Eucharistie dominicale et la Veillée pascale sont le cœur de l’initiation chrétienne." },
-    { "titre": "Communauté", "texte": "La koinônia : une petite communauté où se donnent et se vérifient l’amour et le pardon." }
-  ],
   "horaires_titre": "Horaires",
   "acces_titre": "Nous trouver",
-  "photos_titre": "La vie des communautés",
+  "citation": "Il faut faire des communautés chrétiennes comme la Sainte Famille de Nazareth, qui vivent en humilité, simplicité et louange : l’autre est Christ.",
+  "icone_description": "Icône de la Vierge à l’Enfant",
   "activites_titre": "Activités récentes",
+  "tripode": [
+    {
+      "titre": "Parole",
+      "texte": "Chaque semaine, la communauté célèbre la Parole de Dieu et la laisse éclairer le concret de la vie."
+    },
+    {
+      "titre": "Liturgie",
+      "texte": "L’Eucharistie dominicale et la Veillée pascale sont le cœur de l’initiation chrétienne."
+    },
+    {
+      "titre": "Communauté",
+      "texte": "La koinônia : une petite communauté où se donnent les signes d'amour et d'unité."
+    }
+  ],
+  "icone": "/assets/images/icone-vierge.jpg",
+  "sections": [
+    "intro",
+    "tripode",
+    "horaires",
+    "photos",
+    "activites"
+  ],
   "activites_nombre": 3,
-  "sections": ["intro", "tripode", "horaires", "photos", "activites"]
+  "medaillon_description": "Notre-Dame des Douleurs",
+  "medaillon": "/assets/images/uploads/notre-dame-des-douleurs.png",
+  "photos_titre": "La vie des communautés",
+  "texte": "Au Haut-du-Lièvre, l’église de la Vierge des Pauvres accueille les communautés du Chemin néocatéchuménal : un itinéraire d’initiation chrétienne pour découvrir ou redécouvrir, en petites communautés, les richesses du baptême.",
+  "citation_auteur": "",
+  "bouton_1": "Découvrir le Chemin",
+  "tripode_titre": "Le tripode : Parole, Liturgie, Communauté",
+  "bouton_2": "Nous trouver"
 }
