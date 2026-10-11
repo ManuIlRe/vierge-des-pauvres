@@ -20,7 +20,7 @@ layout: base.njk
   <h2>Photos</h2>
   <div class="grille-photos">
     {% for p in photos %}
-    <figure><a href="{{ p.image }}"><img src="{{ p.image }}" alt="{{ p.legende }}" loading="lazy"></a>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
+    <figure><a href="{{ p.image or p }}"><img src="{{ p.image or p }}" alt="{{ p.legende }}" loading="lazy"></a>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
     {% endfor %}
   </div>
   {% endif %}

@@ -1,7 +1,7 @@
 <div class="diaporama" aria-roledescription="carrousel" aria-label="Photos">
   <div class="diapos" tabindex="0">
     {% for p in photos %}
-    <figure><img src="{{ p.image }}" alt="{{ p.legende or "Photo " + loop.index }}" title="Cliquer pour agrandir"{% if not loop.first %} loading="lazy"{% endif %}>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
+    <figure><img src="{{ p.image or p }}" alt="{{ p.legende or "Photo " + loop.index }}" title="Cliquer pour agrandir"{% if not loop.first %} loading="lazy"{% endif %}>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
     {% endfor %}
   </div>
   <button class="diapo-btn prec" aria-label="Photo précédente">‹</button>

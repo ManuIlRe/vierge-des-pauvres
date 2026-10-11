@@ -8,5 +8,40 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+  <script>
+    // Téléversement de plusieurs photos à la fois.
+    // Decap n'envoie qu'un fichier par sélection : on autorise la sélection multiple
+    // et on lui transmet les fichiers un par un, en attendant la fin de chaque envoi.
+    const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+    const champ = () => document.querySelector('input[type=file]');
+    const libelle = () => (champ()?.closest('label, button') || champ()?.parentElement)?.textContent.trim();
+
+    new MutationObserver(() => {
+      document.querySelectorAll('input[type=file]').forEach((i) => { i.multiple = true; });
+    }).observe(document.body, { childList: true, subtree: true });
+
+    document.addEventListener('change', async (e) => {
+      const input = e.target;
+      if (!(input instanceof HTMLInputElement) || input.type !== 'file') return;
+      if (input.dataset.lot || input.files.length < 2) return;
+      e.stopImmediatePropagation();
+      const fichiers = [...input.files];
+      const repos = libelle();
+      for (const fichier of fichiers) {
+        const cible = champ();
+        if (!cible) break;
+        const dt = new DataTransfer();
+        dt.items.add(fichier);
+        cible.files = dt.files;
+        cible.dataset.lot = '1';
+        cible.dispatchEvent(new Event('change', { bubbles: true }));
+        delete cible.dataset.lot;
+        // Le bouton change de texte pendant l'envoi, puis revient à son texte habituel
+        for (let i = 0; i < 20 && libelle() === repos; i++) await pause(100);
+        for (let i = 0; i < 1200 && libelle() !== repos; i++) await pause(100);
+        await pause(300);
+      }
+    }, true);
+  </script>
 </body>
 </html>

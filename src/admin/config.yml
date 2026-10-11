@@ -28,14 +28,10 @@ collections:
       - { name: resume, label: Résumé (une ou deux phrases), widget: text, required: false }
       - { name: body, label: Texte, widget: markdown }
       - name: photos
-        label: Photos
-        label_singular: Photo
-        widget: list
+        label: "Photos (sélection multiple possible)"
+        widget: image
         required: false
-        summary: "{{fields.legende}}"
-        fields:
-          - { name: image, label: Photo, widget: image }
-          - { name: legende, label: Légende, widget: string, required: false }
+        media_library: { config: { multiple: true } }
       - { name: video, label: Lien YouTube (facultatif), widget: string, required: false }
 
   - name: pages
@@ -133,13 +129,10 @@ collections:
         file: src/_data/galerie.json
         fields:
           - name: photos
-            label: Photos
-            label_singular: Photo
-            widget: list
-            summary: "{{fields.legende}}"
-            fields:
-              - { name: image, label: Photo, widget: image }
-              - { name: legende, label: Légende, widget: string, required: false }
+            label: "Photos (sélection multiple possible)"
+            widget: image
+            required: false
+            media_library: { config: { multiple: true } }
           - name: videos
             label: Vidéos
             label_singular: Vidéo
