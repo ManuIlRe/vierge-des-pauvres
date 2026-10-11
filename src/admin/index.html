@@ -10,36 +10,63 @@
   <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
   <script>
     // Téléversement de plusieurs photos à la fois.
-    // Decap n'envoie qu'un fichier par sélection : on autorise la sélection multiple
-    // et on lui transmet les fichiers un par un, en attendant la fin de chaque envoi.
+    // Decap n'envoie qu'un fichier par sélection et n'en insère qu'un à la fois :
+    // on autorise la sélection multiple, on lui transmet les fichiers un par un et,
+    // pour un champ à plusieurs photos, on insère chaque photo dès qu'elle est envoyée.
     const pause = (ms) => new Promise((r) => setTimeout(r, ms));
-    const champ = () => document.querySelector('input[type=file]');
-    const libelle = () => (champ()?.closest('label, button') || champ()?.parentElement)?.textContent.trim();
+    const champ = () => document.querySelector("input[type=file]");
+    const libelle = () => (champ()?.closest("label, button") || champ()?.parentElement)?.textContent.trim();
+    const bouton = (racine, motif) => [...racine.querySelectorAll("button")].find((b) => motif.test(b.textContent));
+    const attendre = async (test, essais = 100) => { for (let i = 0; i < essais && !test(); i++) await pause(100); return test(); };
 
     new MutationObserver(() => {
-      document.querySelectorAll('input[type=file]').forEach((i) => { i.multiple = true; });
+      document.querySelectorAll("input[type=file]").forEach((i) => { i.multiple = true; });
     }).observe(document.body, { childList: true, subtree: true });
 
-    document.addEventListener('change', async (e) => {
+    // On retient le champ depuis lequel la bibliothèque a été ouverte
+    let ouvreur = null;
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest?.("button");
+      if (!b || champ()) return;
+      const multiple = /images/i.test(b.textContent) && !/remove|supprimer/i.test(b.textContent);
+      const parents = [];
+      for (let n = b.parentElement; n && parents.length < 6; n = n.parentElement) parents.push(n);
+      ouvreur = { multiple, parents };
+    }, true);
+    const rouvrir = async () => {
+      const zone = ouvreur.parents.find((n) => n.isConnected && bouton(n, /add more images|choose images|choisir des images/i));
+      if (!zone) return false;
+      bouton(zone, /add more images|choose images|choisir des images/i).click();
+      return attendre(champ);
+    };
+
+    document.addEventListener("change", async (e) => {
       const input = e.target;
-      if (!(input instanceof HTMLInputElement) || input.type !== 'file') return;
+      if (!(input instanceof HTMLInputElement) || input.type !== "file") return;
       if (input.dataset.lot || input.files.length < 2) return;
       e.stopImmediatePropagation();
       const fichiers = [...input.files];
+      const inserer = !!ouvreur?.multiple;
       const repos = libelle();
-      for (const fichier of fichiers) {
+      for (const [n, fichier] of fichiers.entries()) {
         const cible = champ();
         if (!cible) break;
         const dt = new DataTransfer();
         dt.items.add(fichier);
         cible.files = dt.files;
-        cible.dataset.lot = '1';
-        cible.dispatchEvent(new Event('change', { bubbles: true }));
+        cible.dataset.lot = "1";
+        cible.dispatchEvent(new Event("change", { bubbles: true }));
         delete cible.dataset.lot;
         // Le bouton change de texte pendant l'envoi, puis revient à son texte habituel
-        for (let i = 0; i < 20 && libelle() === repos; i++) await pause(100);
-        for (let i = 0; i < 1200 && libelle() !== repos; i++) await pause(100);
+        await attendre(() => libelle() !== repos, 20);
+        await attendre(() => libelle() === repos, 1200);
         await pause(300);
+        if (!inserer) continue;
+        const choisir = bouton(document, /choisir les éléments|choose selected/i);
+        if (!choisir || choisir.disabled) break;
+        choisir.click();
+        await attendre(() => !champ());
+        if (n < fichiers.length - 1 && !(await rouvrir())) break;
       }
     }, true);
   </script>
