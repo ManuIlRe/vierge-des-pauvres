@@ -17,7 +17,27 @@
     const champ = () => document.querySelector("input[type=file]");
     const libelle = () => (champ()?.closest("label, button") || champ()?.parentElement)?.textContent.trim();
     const bouton = (racine, motif) => [...racine.querySelectorAll("button")].find((b) => motif.test(b.textContent));
-    const attendre = async (test, essais = 100) => { for (let i = 0; i < essais && !test(); i++) await pause(100); return test(); };
+    const attendre = async (test, essais = 100) => { for (let i = 0; i < essais * 2 && !test(); i++) await pause(50); return test(); };
+
+    // Les photos d'appareil ou de téléphone sont réduites avant l'envoi (2000 px au plus) :
+    // envoi et publication bien plus rapides, pages plus légères pour les visiteurs.
+    const COTE_MAX = 2000;
+    const alleger = async (fichier) => {
+      if (fichier.type !== "image/jpeg") return fichier;
+      try {
+        const image = await createImageBitmap(fichier, { imageOrientation: "from-image" });
+        const echelle = Math.min(1, COTE_MAX / Math.max(image.width, image.height));
+        if (echelle === 1 && fichier.size < 700000) return fichier;
+        const toile = document.createElement("canvas");
+        toile.width = Math.round(image.width * echelle);
+        toile.height = Math.round(image.height * echelle);
+        toile.getContext("2d").drawImage(image, 0, 0, toile.width, toile.height);
+        const blob = await new Promise((r) => toile.toBlob(r, "image/jpeg", 0.85));
+        if (!blob || blob.size >= fichier.size) return fichier;
+        console.info("Photo allégée :", fichier.name, Math.round(fichier.size / 1024) + " Ko →", Math.round(blob.size / 1024) + " Ko");
+        return new File([blob], fichier.name, { type: "image/jpeg" });
+      } catch { return fichier; }
+    };
 
     new MutationObserver(() => {
       document.querySelectorAll("input[type=file]").forEach((i) => { i.multiple = true; });
@@ -43,16 +63,16 @@
     document.addEventListener("change", async (e) => {
       const input = e.target;
       if (!(input instanceof HTMLInputElement) || input.type !== "file") return;
-      if (input.dataset.lot || input.files.length < 2) return;
+      if (input.dataset.lot || input.files.length < 1) return;
       e.stopImmediatePropagation();
       const fichiers = [...input.files];
-      const inserer = !!ouvreur?.multiple;
+      const inserer = !!ouvreur?.multiple && fichiers.length > 1;
       const repos = libelle();
       for (const [n, fichier] of fichiers.entries()) {
         const cible = champ();
         if (!cible) break;
         const dt = new DataTransfer();
-        dt.items.add(fichier);
+        dt.items.add(await alleger(fichier));
         cible.files = dt.files;
         cible.dataset.lot = "1";
         cible.dispatchEvent(new Event("change", { bubbles: true }));
@@ -60,7 +80,7 @@
         // Le bouton change de texte pendant l'envoi, puis revient à son texte habituel
         await attendre(() => libelle() !== repos, 20);
         await attendre(() => libelle() === repos, 1200);
-        await pause(300);
+        await pause(100);
         if (!inserer) continue;
         const choisir = bouton(document, /choisir les éléments|choose selected/i);
         if (!choisir || choisir.disabled) break;
