@@ -47,6 +47,19 @@ collections:
     fields:
       - { name: title, label: Titre, widget: string }
       - { name: ordre, label: "Ordre d'affichage (1 = en premier)", widget: number, value_type: int, min: 1, default: 10 }
+      - name: icone
+        label: "Icône (affichée tant qu'il n'y a pas de photo principale)"
+        widget: select
+        default: croix
+        options:
+          - { label: "Croix", value: croix }
+          - { label: "Étoile (fête)", value: fete }
+          - { label: "Livre (catéchèses)", value: livre }
+          - { label: "Enfants", value: enfants }
+          - { label: "Groupe (jeunes)", value: jeunes }
+          - { label: "Porte-voix (mission)", value: mission }
+          - { label: "Calice (liturgie)", value: liturgie }
+          - { label: "Chapelle", value: chapelle }
       - { name: image, label: Photo principale, widget: image, required: false }
       - { name: resume, label: Résumé (une ou deux phrases), widget: text, required: false }
       - { name: body, label: Texte, widget: markdown, required: false }

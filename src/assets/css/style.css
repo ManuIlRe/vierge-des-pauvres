@@ -198,6 +198,10 @@ figcaption { font-size: .88rem; color: var(--gris); margin-top: .4rem; }
 .grille-photos a { cursor: zoom-in; display: block; }
 
 /* Cartes sans photo et cartes compactes (Vie de la paroisse) */
-.carte:not(:has(img)) { border-top: 4px solid var(--rouge); }
+.carte:not(:has(img)):not(:has(.carte-icone)) { border-top: 4px solid var(--rouge); }
+.carte-icone { aspect-ratio: 4 / 3; background: var(--nuit); display: grid; place-items: center; border-bottom: 3px solid var(--or); }
+.carte-icone svg { width: 38%; fill: none; stroke: var(--or-clair); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.cartes.compactes .carte-icone { aspect-ratio: 16 / 9; }
+.cartes.compactes .carte-icone svg { width: 26%; }
 .cartes.compactes { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
 .cartes.compactes .carte img { aspect-ratio: 16 / 9; }

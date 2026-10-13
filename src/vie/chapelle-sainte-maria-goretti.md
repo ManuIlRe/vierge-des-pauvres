@@ -1,6 +1,7 @@
 ---
 title: "Chapelle Sainte Maria Goretti"
 ordre: 7
+icone: chapelle
 image: ""
 resume: "En cours de réalisation."
 photos: []

@@ -1,6 +1,7 @@
 ---
 title: "Fête patronale"
 ordre: 1
+icone: fete
 image: ""
 resume: "Le dimanche précédant ou suivant la fête de Notre-Dame des Douleurs (15 septembre)."
 photos: []

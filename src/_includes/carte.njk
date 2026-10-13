@@ -1,5 +1,6 @@
 <a class="carte" href="{{ a.url }}">
-  {% if a.data.image %}<img src="{{ a.data.image }}" alt="" loading="lazy">{% endif %}
+  {% if a.data.image %}<img src="{{ a.data.image }}" alt="" loading="lazy">
+  {% elif not a.data.rubrique.avec_date %}<div class="carte-icone">{% set icone = a.data.icone %}{% include "icone.njk" %}</div>{% endif %}
   <div class="carte-txt">
     {% if a.data.rubrique.avec_date %}<p class="date">{{ a.date | dateFr }}</p>{% endif %}
     <h3>{{ a.data.title }}</h3>
