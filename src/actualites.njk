@@ -1,0 +1,14 @@
+---
+layout: page.njk
+title: Actualités
+chapeau: Les événements de la paroisse et des communautés.
+permalink: /actualites/
+large: true
+---
+{% if collections.actualites.length %}
+<div class="cartes">
+  {% for a in collections.actualites %}{% include "carte.njk" %}{% endfor %}
+</div>
+{% else %}
+<p>Aucune actualité pour le moment.</p>
+{% endif %}

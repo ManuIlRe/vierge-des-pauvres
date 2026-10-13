@@ -138,6 +138,13 @@ figcaption { font-size: .88rem; color: var(--gris); margin-top: .4rem; }
 
 :focus-visible { outline: 3px solid var(--or); outline-offset: 2px; }
 
+@media (max-width: 1080px) {
+  .nav-toggle { display: block; }
+  nav { display: none; width: 100%; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; gap: 0; padding-bottom: .5rem; }
+  nav a { display: block; padding: .6rem 0; }
+}
 @media (max-width: 860px) {
   .nav-toggle { display: block; }
   nav { display: none; width: 100%; }
@@ -189,3 +196,8 @@ figcaption { font-size: .88rem; color: var(--gris); margin-top: .4rem; }
 .vis-fermer:hover { background: var(--or); color: var(--nuit); }
 .vis-aide { position: absolute; bottom: .6rem; left: 50%; transform: translateX(-50%); margin: 0; color: #fff; font-size: .85rem; background: rgba(22,34,63,.75); padding: .15rem .8rem; border-radius: 99px; pointer-events: none; }
 .grille-photos a { cursor: zoom-in; display: block; }
+
+/* Cartes sans photo et cartes compactes (Vie de la paroisse) */
+.carte:not(:has(img)) { border-top: 4px solid var(--rouge); }
+.cartes.compactes { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+.cartes.compactes .carte img { aspect-ratio: 16 / 9; }

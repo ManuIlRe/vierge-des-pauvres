@@ -3,7 +3,7 @@
   "acces_titre": "Nous trouver",
   "citation": "Il faut faire des communautés chrétiennes comme la Sainte Famille de Nazareth, qui vivent en humilité, simplicité et louange : l’autre est Christ.",
   "icone_description": "Icône de la Vierge à l’Enfant",
-  "activites_titre": "Activités récentes",
+  "activites_titre": "Actualités",
   "tripode": [
     {
       "titre": "Parole",
@@ -24,6 +24,7 @@
     "tripode",
     "horaires",
     "photos",
+    "vie",
     "activites"
   ],
   "activites_nombre": 3,
@@ -34,5 +35,6 @@
   "citation_auteur": "",
   "bouton_1": "Découvrir le Chemin",
   "tripode_titre": "Le tripode : Parole, Liturgie, Communauté",
-  "bouton_2": "Nous trouver"
+  "bouton_2": "Nous trouver",
+  "vie_titre": "Vie de la paroisse"
 }

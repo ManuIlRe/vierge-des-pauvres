@@ -29,7 +29,9 @@ poi aprire http://localhost:8080/admin/. Le modifiche vengono scritte direttamen
 | Cronologia "Notre histoire" | `src/_data/histoire.json` | Informations et réglages → Notre histoire |
 | Galleria foto e video | `src/_data/galerie.json` | Informations et réglages → Photos et vidéos |
 | Pagina "Le Chemin" | `src/le-chemin.md` | Pages |
-| Attività (una per file) | `src/activites/*.md` | Activités |
+| Eventi con data (uno per file) | `src/actualites/*.md` | Actualités |
+| Proposte permanenti (una per file) | `src/vie/*.md` | Vie de la paroisse |
+| Pagina iniziale | `src/_data/accueil.json` | Informations et réglages → Page d'accueil |
 | Statuto (PDF) | `src/documents/statut-chemin-neocatechumenal.pdf` | sostituire il file |
 | Icona della pagina iniziale | `src/assets/images/icone-vierge.jpg` | sostituire il file |
 | Colori e stile | `src/assets/css/style.css` (variabili in alto) | — |

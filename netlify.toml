@@ -4,5 +4,10 @@
 
 [[redirects]]
   from = "/activites/mission-dans-le-quartier/*"
-  to = "/activites/fete-patronale/"
+  to = "/actualites/fete-patronale/"
+  status = 301
+
+[[redirects]]
+  from = "/activites/*"
+  to = "/actualites/:splat"
   status = 301

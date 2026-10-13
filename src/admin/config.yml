@@ -13,10 +13,11 @@ media_folder: src/assets/images/uploads
 public_folder: /assets/images/uploads
 
 collections:
-  - name: activites
-    label: Activités
-    label_singular: Activité
-    folder: src/activites
+  - name: actualites
+    label: Actualités
+    label_singular: Actualité
+    description: "Les événements datés, avec leurs photos."
+    folder: src/actualites
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{title}} — {{date}}"
@@ -26,7 +27,29 @@ collections:
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
       - { name: image, label: Photo principale, widget: image, required: false }
       - { name: resume, label: Résumé (une ou deux phrases), widget: text, required: false }
-      - { name: body, label: Texte, widget: markdown }
+      - { name: body, label: Texte, widget: markdown, required: false }
+      - name: photos
+        label: "Photos (pour en ajouter plusieurs : Téléverser, puis sélectionner tous les fichiers)"
+        widget: image
+        required: false
+        media_library: { config: { multiple: true } }
+      - { name: video, label: Lien YouTube (facultatif), widget: string, required: false }
+
+  - name: vie
+    label: Vie de la paroisse
+    label_singular: Proposition
+    description: "Ce qui se vit toute l'année : catéchèses, catéchisme, liturgie… L'ordre d'affichage suit le champ « Ordre »."
+    folder: src/vie
+    create: true
+    slug: "{{slug}}"
+    summary: "{{ordre}} — {{title}}"
+    sortable_fields: [ordre, title]
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: ordre, label: "Ordre d'affichage (1 = en premier)", widget: number, value_type: int, min: 1, default: 10 }
+      - { name: image, label: Photo principale, widget: image, required: false }
+      - { name: resume, label: Résumé (une ou deux phrases), widget: text, required: false }
+      - { name: body, label: Texte, widget: markdown, required: false }
       - name: photos
         label: "Photos (pour en ajouter plusieurs : Téléverser, puis sélectionner tous les fichiers)"
         widget: image
@@ -75,8 +98,9 @@ collections:
           - { name: horaires_titre, label: "Titre de la section horaires", widget: string }
           - { name: acces_titre, label: "Titre de la section adresse", widget: string }
           - { name: photos_titre, label: "Titre du diaporama", widget: string }
-          - { name: activites_titre, label: "Titre des activités", widget: string }
-          - { name: activites_nombre, label: "Nombre d'activités affichées", widget: number, value_type: int, min: 1, max: 9, default: 3 }
+          - { name: vie_titre, label: "Titre de la section Vie de la paroisse", widget: string }
+          - { name: activites_titre, label: "Titre des actualités", widget: string }
+          - { name: activites_nombre, label: "Nombre d'actualités affichées", widget: number, value_type: int, min: 1, max: 9, default: 3 }
           - name: sections
             label: "Sections (glisser pour changer l'ordre, supprimer pour masquer)"
             label_singular: section
@@ -90,7 +114,8 @@ collections:
                 - { label: "Tripode", value: tripode }
                 - { label: "Horaires et adresse", value: horaires }
                 - { label: "Diaporama de photos", value: photos }
-                - { label: "Activités récentes", value: activites }
+                - { label: "Vie de la paroisse", value: vie }
+                - { label: "Actualités", value: activites }
       - name: site
         label: Paroisse, horaires, contact
         file: src/_data/site.json
@@ -98,11 +123,14 @@ collections:
           - { name: nom, label: Nom, widget: string }
           - { name: sous_titre, label: Sous-titre, widget: string }
           - { name: adresse, label: Adresse, widget: text }
+          - { name: transport, label: "Transports (tram, bus)", widget: string, required: false }
           - { name: lien_carte, label: Lien vers la carte, widget: string }
           - { name: email, label: E-mail, widget: string }
           - { name: telephone, label: Téléphone, widget: string }
           - { name: presbytre, label: Presbytre, widget: string }
           - { name: photo_eglise, label: Photo de l'église, widget: image, required: false }
+          - { name: vignette_contact, label: "Image de la page Contact (sous les horaires)", widget: image, required: false }
+          - { name: vignette_contact_legende, label: "Légende de cette image", widget: string, required: false }
           - name: horaires
             label: Horaires
             label_singular: Horaire

@@ -3,7 +3,7 @@ layout: base.njk
 ---
 <section class="page-head">
   <div class="wrap">
-    <p class="surtitre"><a href="/activites/">Activités</a> · {{ page.date | dateFr }}</p>
+    <p class="surtitre"><a href="{{ rubrique.url }}">{{ rubrique.nom }}</a>{% if rubrique.avec_date %} · {{ page.date | dateFr }}{% endif %}</p>
     <h1>{{ title }}</h1>
     {% if resume %}<p class="chapeau">{{ resume }}</p>{% endif %}
   </div>
@@ -20,9 +20,9 @@ layout: base.njk
   <h2>Photos</h2>
   <div class="grille-photos">
     {% for p in photos %}
-    <figure><a href="{{ p.image or p }}"><img src="{{ p.image or p }}" alt="{{ p.legende }}" loading="lazy"></a>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
+    <figure><a href="{{ p.image or p }}"><img src="{{ p.image or p }}" alt="{{ p.legende or "Photo " + loop.index }}" loading="lazy"></a>{% if p.legende %}<figcaption>{{ p.legende }}</figcaption>{% endif %}</figure>
     {% endfor %}
   </div>
   {% endif %}
-  <p class="retour"><a href="/activites/">← Toutes les activités</a></p>
+  <p class="retour"><a href="{{ rubrique.url }}">{{ rubrique.retour }}</a></p>
 </article>

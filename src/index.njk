@@ -61,6 +61,7 @@ permalink: /
     <h2>{{ accueil.acces_titre }}</h2>
     {% if site.photo_eglise %}<img class="photo" src="{{ site.photo_eglise }}" alt="L’église de la Vierge des Pauvres" loading="lazy">{% endif %}
     <p class="pre">{{ site.adresse }}</p>
+    {% if site.transport %}<p>{{ site.transport }}</p>{% endif %}
     <p>Presbytre : {{ site.presbytre }}</p>
     <p><a class="lien-fleche" href="/contact/">Contact et accès →</a></p>
   </div>
@@ -72,12 +73,20 @@ permalink: /
   {% set photos = galerie.photos %}{% include "diaporama.njk" %}
 </section>
 
-{% elif section == "activites" and collections.activites.length %}
+{% elif section == "vie" and collections.vie.length %}
+<section class="wrap bloc">
+  <div class="titre-ligne"><h2>{{ accueil.vie_titre }}</h2><a class="lien-fleche" href="/vie-de-la-paroisse/">Tout voir →</a></div>
+  <div class="cartes compactes">
+    {% for a in collections.vie %}{% include "carte.njk" %}{% endfor %}
+  </div>
+</section>
+
+{% elif section == "activites" and collections.actualites.length %}
 <section class="bloc fond-clair">
   <div class="wrap">
-    <div class="titre-ligne"><h2>{{ accueil.activites_titre }}</h2><a class="lien-fleche" href="/activites/">Tout voir →</a></div>
+    <div class="titre-ligne"><h2>{{ accueil.activites_titre }}</h2><a class="lien-fleche" href="/actualites/">Tout voir →</a></div>
     <div class="cartes">
-      {% for a in collections.activites | limit(accueil.activites_nombre or 3) %}{% include "carte-activite.njk" %}{% endfor %}
+      {% for a in collections.actualites | limit(accueil.activites_nombre or 3) %}{% include "carte.njk" %}{% endfor %}
     </div>
   </div>
 </section>

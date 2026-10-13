@@ -1,21 +1,21 @@
 {
   "nom": "Vierge des Pauvres",
   "sous_titre": "Communautés du Chemin néocatéchuménal · Nancy, Haut-du-Lièvre",
-  "adresse": "Église de la Vierge des Pauvres\n437 avenue Raymond Pinchard\n54100 Nancy",
-  "lien_carte": "https://www.openstreetmap.org/search?query=437%20Avenue%20Raymond%20Pinchard%2C%2054100%20Nancy",
+  "adresse": "Église de la Vierge des Pauvres\nRue Dominique Louis (angle avenue Raymond Pinchard)\n54100 Nancy",
+  "lien_carte": "https://www.openstreetmap.org/search?query=Rue%20Dominique%20Louis%2C%2054100%20Nancy",
   "email": "paoloanfuso@gmail.com",
   "telephone": "+33 7 52 50 20 30",
   "presbytre": "Père Paolo Anfuso",
   "horaires": [
     {
       "jour": "Mardi",
-      "heure": "12h30",
+      "heure": "18h00",
       "description": "Messe"
     },
     {
       "jour": "Vendredi",
       "heure": "12h30",
-      "description": "Messe"
+      "description": "Messe (sauf en Carême : messe à 12h, suivie du Chemin de croix à 12h30)"
     },
     {
       "jour": "Samedi",
@@ -28,5 +28,8 @@
       "description": "Messe"
     }
   ],
-  "photo_eglise": "/assets/images/uploads/eglise-vierge-des-pauvres.webp"
+  "photo_eglise": "/assets/images/uploads/eglise-vierge-des-pauvres.webp",
+  "transport": "Tram T2, arrêt Tilleul argenté",
+  "vignette_contact": "/assets/images/uploads/notre-dame-des-douleurs.png",
+  "vignette_contact_legende": "Notre-Dame des Douleurs"
 }

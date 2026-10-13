@@ -9,6 +9,7 @@ large: true
     {% if site.photo_eglise %}<img class="photo" src="{{ site.photo_eglise }}" alt="L’église de la Vierge des Pauvres">{% endif %}
     <h2>Adresse</h2>
     <p class="pre">{{ site.adresse }}</p>
+    {% if site.transport %}<p>{{ site.transport }}</p>{% endif %}
     <p><a class="btn btn-contour" href="{{ site.lien_carte }}" rel="noopener">Voir sur la carte</a></p>
     <h2>Nous écrire</h2>
     <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><br>{{ site.telephone }}</p>
@@ -21,6 +22,6 @@ large: true
       <li><strong>{{ h.jour }} <span>{{ h.heure }}</span></strong>{{ h.description }}</li>
       {% endfor %}
     </ul>
-    <figure class="vignette"><img src="/assets/images/uploads/notre-dame-des-douleurs.png" alt="Notre-Dame des Douleurs" loading="lazy"><figcaption>Notre-Dame des Douleurs</figcaption></figure>
+    {% if site.vignette_contact %}<figure class="vignette"><img src="{{ site.vignette_contact }}" alt="{{ site.vignette_contact_legende }}" loading="lazy">{% if site.vignette_contact_legende %}<figcaption>{{ site.vignette_contact_legende }}</figcaption>{% endif %}</figure>{% endif %}
   </div>
 </div>

@@ -1,0 +1,14 @@
+---
+layout: page.njk
+title: Vie de la paroisse
+chapeau: Ce qui se vit tout au long de l’année à la Vierge des Pauvres.
+permalink: /vie-de-la-paroisse/
+large: true
+---
+{% if collections.vie.length %}
+<div class="cartes">
+  {% for a in collections.vie %}{% include "carte.njk" %}{% endfor %}
+</div>
+{% else %}
+<p>Aucune proposition pour le moment.</p>
+{% endif %}
